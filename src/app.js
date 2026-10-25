@@ -11,7 +11,7 @@ function handler(req, res) {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     return res.end(
-      `<h1>Hello from Jenkins CI/CD!</h1><p>Build version: <b>${VERSION}</b></p>`
+      `<h1>Hello from Jenkins CI/CD!</h1><p>Build version: <b>${VERSION}</b></p><p>Deployed automatically by Jenkins!</p>`
     );
   }
   res.writeHead(404, { 'Content-Type': 'application/json' });
