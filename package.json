@@ -1,0 +1,15 @@
+{
+  "name": "jenkins-cicd-demo",
+  "version": "1.0.0",
+  "description": "Sample Node.js app built, tested and deployed by a Jenkins pipeline",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "test:ci": "mkdir -p test-results && node --test --test-reporter=spec --test-reporter-destination=stdout --test-reporter=junit --test-reporter-destination=test-results/junit.xml"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

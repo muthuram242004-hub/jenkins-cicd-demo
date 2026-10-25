@@ -1,0 +1,20 @@
+# Runs Jenkins locally in Docker.
+#   Start:  docker compose -f jenkins/docker-compose.yml up -d --build
+#   Open:   http://localhost:8080
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    # root lets Jenkins use the host's Docker socket without GID fiddling.
+    # Fine for a learning setup; use a dedicated agent/group in production.
+    user: root
+    ports:
+      - "8080:8080"     # Jenkins web UI
+      - "50000:50000"   # inbound agents
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock   # let pipelines run docker
+    restart: unless-stopped
+
+volumes:
+  jenkins_home:
